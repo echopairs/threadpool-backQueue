@@ -1,0 +1,30 @@
+一、struct DataObj
+Des:this is date element
+Param:
+
+    param1: date_;                   /* date need to Process,or yuv date */
+    param2: void*(*callBack)(int)    /* callbace callBackction,we call it after alalysis date*/
+
+二、struct WorkPthread
+Des: this is  thread element
+Param:
+    param1: pthreadId_;         /* pthreadId*/
+    param2: running_;           /* flag to control thread lifecycle */
+    param3: Itk_;               /* the interface to get  date */
+
+三、class TaskQueueManager
+Des:this is date queue Manager
+Iterface:
+    1. DataObj *pop();          /* the interface for get date from <queue> */
+    2. void *push(DataObj*)     /* the interface for push date to <queue> */
+param:
+    param1:mutex_;               /* mutex to protected <queue> */
+    param2:datas_;               /* queue to saved date*/
+四、class DataProcessManager
+Des: this is calss for manager Process thread
+Param:
+    param1:workThreadNum_      /*the number of Process thread*/
+    param2:Itk_                /*the interface to get  date*/
+Interface:
+    1. DataProcessManager(...)  /*initalize param*/
+    2. void start()             /* start create thread and Process date*/
